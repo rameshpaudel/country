@@ -1,9 +1,59 @@
-# Rinvex Country Change Log
+# Rinvex Countries Change Log
 
 All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](CONTRIBUTING.md).
 
+
+## [v5.0.2] - 2018-12-23
+- Fix dialing code for Caribbean Netherlands, Curaçao","official, Saint Helena (fix #79)
+- Mexico City is no longer called Distrito Federal
+- New currency code: VEF became VES
+
+## [v5.0.1] - 2018-12-22
+- Update composer dependencies
+- Add PHP 7.3 support to travis
+- Mexico City is no longer called Distrito Federal
+
+## [v5.0.0] - 2018-10-01
+- Enforce Consistency
+- Rename package to rinvex/countries
+
+## [v4.0.0] - 2018-09-22
+- Simplify code by using PHP7 null coalescing operator
+- Fix stupid gitattributes export-ignore issues
+- Rename country variable to countryCode for naming consistency
+- Remove file header docblock
+- Push forward PHPUnit version
+- Update composer config
+- Fix deprecated PHPUnit TestCase namespace
+- Disable travis email notifications
+- Fix git export-ignore dotfiles
+- Support the new StyleCI CSS/JS beta features
+- Add PHPUnitPrettyResultPrinter
+- Enforce consistency
+- Require PHP 7.1.0 at least
+- Tweak composer file
+- Typehint method returns
+- Fix wrong method return types
+- Update minimum required PHP version
+- Update composer packages
+- Update travis php versions
+- Add Laravel Auto Discovery support and validation rule
+- Add missing Kosovo emoji
+- Drop StyleCI multi-language support (paid feature now!)
+- Prepare and tweak testing configuration
+- Update PHPUnit options
+
+## [v3.1.0] - 2017-03-07
+- Format country code to small case before retrieval
+- Change internal methods visibility to protected
+- Update StyleCI fixers and other supplementary files
+- Enforce strict type declaration
+- Enforce consistency and rename Country Loader class
+- Execute reflections once per test class
+- Fix strict type declaration issues and tweak code
+- Update Ukrainian phone prefixes and native name fix
 
 ## [v3.0.0] - 2016-12-12
 - Drop PHP 5.6 support
@@ -38,7 +88,12 @@ This project adheres to [Semantic Versioning](CONTRIBUTING.md).
   - Refactor documentation
 
 ## v1.0.0 - 2016-08-20
-- Commit first draft.
+- Tag first release.
 
-[v3.0.0]: https://github.com/rinvex/country/compare/v2.0.0...v3.0.0
-[v2.0.0]: https://github.com/rinvex/country/compare/v1.0.0...v2.0.0
+[v5.0.2]: https://github.com/rinvex/countries/compare/v5.0.1...v5.0.2
+[v5.0.1]: https://github.com/rinvex/countries/compare/v5.0.0...v5.0.1
+[v5.0.0]: https://github.com/rinvex/countries/compare/v4.0.0...v5.0.0
+[v4.0.0]: https://github.com/rinvex/countries/compare/v3.1.0...v4.0.0
+[v3.1.0]: https://github.com/rinvex/countries/compare/v3.0.0...v3.1.0
+[v3.0.0]: https://github.com/rinvex/countries/compare/v2.0.0...v3.0.0
+[v2.0.0]: https://github.com/rinvex/countries/compare/v1.0.0...v2.0.0

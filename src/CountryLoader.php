@@ -1,24 +1,12 @@
 <?php
 
-/*
- * NOTICE OF LICENSE
- *
- * Part of the Rinvex Country Package.
- *
- * This source file is subject to The MIT License (MIT)
- * that is bundled with this package in the LICENSE file.
- *
- * Package: Rinvex Country Package
- * License: The MIT License (MIT)
- * Link:    https://rinvex.com
- */
+declare(strict_types=1);
 
 namespace Rinvex\Country;
 
 use Closure;
-use Rinvex\Country\Exceptions\CountryLoaderException;
 
-class Loader
+class CountryLoader
 {
     /**
      * The countries array.
@@ -37,6 +25,8 @@ class Loader
      */
     public static function country($code, $hydrate = true)
     {
+        $code = mb_strtolower($code);
+
         if (! isset(static::$countries[$code])) {
             static::$countries[$code] = json_decode(static::getFile(__DIR__.'/../resources/data/'.$code.'.json'), true);
         }
@@ -76,7 +66,7 @@ class Loader
      */
     public static function where($key, $operator, $value = null)
     {
-        if (func_num_args() == 2) {
+        if (func_num_args() === 2) {
             $value = $operator;
             $operator = '=';
         }
@@ -97,7 +87,7 @@ class Loader
      *
      * @return \Closure
      */
-    public static function operatorForWhere($key, $operator, $value)
+    protected static function operatorForWhere($key, $operator, $value)
     {
         return function ($item) use ($key, $operator, $value) {
             $retrieved = static::get($item, $key);
@@ -126,7 +116,7 @@ class Loader
      *
      * @return array
      */
-    public static function filter($items, callable $callback = null)
+    protected static function filter($items, callable $callback = null)
     {
         if ($callback) {
             return array_filter($items, $callback, ARRAY_FILTER_USE_BOTH);
@@ -144,7 +134,7 @@ class Loader
      *
      * @return mixed
      */
-    public static function get($target, $key, $default = null)
+    protected static function get($target, $key, $default = null)
     {
         if (is_null($key)) {
             return $target;
@@ -184,7 +174,7 @@ class Loader
      *
      * @return array
      */
-    public static function pluck($array, $value, $key = null)
+    protected static function pluck($array, $value, $key = null)
     {
         $results = [];
 
@@ -217,7 +207,7 @@ class Loader
      *
      * @return array
      */
-    public static function collapse($array)
+    protected static function collapse($array)
     {
         $results = [];
 
@@ -237,11 +227,11 @@ class Loader
      *
      * @param string $filePath
      *
-     * @throws \Rinvex\Country\Exceptions\CountryLoaderException
+     * @throws \Rinvex\Country\CountryLoaderException
      *
      * @return string
      */
-    public static function getFile($filePath)
+    protected static function getFile($filePath)
     {
         if (! file_exists($filePath)) {
             throw CountryLoaderException::invalidCountry();
